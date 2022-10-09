@@ -21,12 +21,11 @@ function addEventListeners() {
       animationTimer,
     ])
       .then((res) => {
-        console.log(res[0]);
-        controller.show(document.getElementById('weather'));
+        controller.show(document.getElementById('weather-wrapper'));
+        const hiddenElements = Array.from(document.querySelectorAll('.fade-out'));
         setTimeout(() => {
           controller.fadeIn(e.target);
-          const mainElements = Array.from(document.getElementById('main').children);
-          controller.cascade(mainElements);
+          controller.cascade(hiddenElements);
         }, 750);
       })
       .catch((err) => console.log(err));

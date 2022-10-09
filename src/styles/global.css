@@ -14,6 +14,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
   height: inherit;
+  color: var(--highlight-color);
 }
 
 #content {
@@ -27,15 +28,15 @@ body {
 
 #query {
   display: flex;
-  margin: 20px;
+  margin: 0 20px;
   height: 4rem;
 }
 
 input {
   background: none;
-  color: var(--highlight-color);
   font-size: 2rem;
   padding: 0.5rem;
+  color: var(--highlight-color);
 }
 
 input[type=text] {
@@ -62,14 +63,46 @@ input[type=text] {
 
 /* Weather */
 
-#main {
-  display: grid;
-  gap: 1rem;
-  grid-template: 1fr 1fr 1fr / 1fr 1fr
+#weather-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#main > li {
-  width: 150px;
-  height: 150px;
-  background-color: darkslateblue;
+#weather-info {
+  width: 60%;
+  display: grid;
+  gap: 1rem;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr;
+}
+
+#weather-info > li {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+#temp {
+  grid-area: 1 / span 2;
+}
+
+.value {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.title {
+  margin-bottom: auto;
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 1rem;
 }
