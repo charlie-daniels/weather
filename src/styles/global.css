@@ -1,0 +1,42 @@
+:root {
+  --highlight-color: #d7d7d7;
+}
+
+html {
+  height: fill-available;
+  height: -webkit-fill-available;
+}
+
+body {
+  background: url('../assets/background-dark.svg') no-repeat center center fixed;
+  -webkit-background-siz: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#content {
+  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#query {
+  display: flex;
+  margin: 20px;
+  justify-content: center;
+}
+
+input {
+  background: none;
+  color: var(--highlight-color);
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+input[type=text] {
+  border-bottom: 2px solid var(--highlight-color);
+  width: 90%;
+}
