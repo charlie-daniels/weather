@@ -14,14 +14,20 @@ function addEventListeners() {
     controller.fadeOut(e.target);
     e.target.reset();
     const animationTimer = new Promise((resolve) => {
-      setTimeout(() => resolve(), 1000);
+      setTimeout(() => resolve(), 750);
     });
     Promise.all([
       weather.queryWeather(location),
       animationTimer,
     ])
       .then((res) => {
-        controller.fadeIn(e.target);
+        console.log(res[0]);
+        controller.show(document.getElementById('weather'));
+        setTimeout(() => {
+          controller.fadeIn(e.target);
+          const mainElements = Array.from(document.getElementById('main').children);
+          controller.cascade(mainElements);
+        }, 750);
       })
       .catch((err) => console.log(err));
   });
