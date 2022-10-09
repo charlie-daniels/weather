@@ -17,15 +17,18 @@ body {
 
 #content {
   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
+  height: min(calc(var(--vh, 1vh) * 100), 100%);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #query {
+  position: absolute;
+  top: calc(50% - 4rem);
   display: flex;
   margin: 20px;
+  height: 4rem;
   justify-content: center;
 }
 
@@ -39,4 +42,21 @@ input {
 input[type=text] {
   border-bottom: 2px solid var(--highlight-color);
   width: 90%;
+}
+
+/* Classes */
+
+.hidden {
+  display: none !important;
+}
+
+/* Transitions */
+
+.transition {
+  transition: all 1s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(-100px);
 }
