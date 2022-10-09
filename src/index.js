@@ -1,3 +1,3 @@
 import './styles/reset.css';
 import './styles/global.css';
-import './modules/loader.js';
+import './modules/loader';
