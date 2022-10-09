@@ -20,6 +20,15 @@ async function queryWeather(location) {
   return getWeatherData(locInfo.lat, locInfo.lon, key);
 }
 
-queryWeather('london').then((res) => {
-  console.log(res);
-});
+function addEventListeners() {
+  document.getElementById('query').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const location = data.get('location');
+    queryWeather(location).then((res) => {
+      console.log(res);
+    });
+  });
+}
+
+addEventListeners();
