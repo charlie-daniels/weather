@@ -9,7 +9,7 @@ html {
 
 body {
   background: url('../assets/background-dark.svg') no-repeat center center fixed;
-  -webkit-background-siz: cover;
+  -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
@@ -53,12 +53,12 @@ input[type=text] {
 /* Transitions */
 
 .transition {
-  transition: all 750ms ease-in-out;
+  transition: all 500ms ease-in-out;
 }
 
 .fade-out {
   opacity: 0;
-  transform: translateY(-100px);
+  transform: translateY(-30px);
 }
 
 /* Weather */
@@ -71,10 +71,11 @@ input[type=text] {
 }
 
 #weather-info {
-  width: 60%;
+  width: 80%;
   display: grid;
   gap: 1rem;
-  grid-template: 1fr 1fr 1fr / 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 260px));
+  justify-content: center;
 }
 
 #weather-info > li {
@@ -85,10 +86,6 @@ input[type=text] {
   justify-content: center;
   align-items: center;
   padding: 1.5rem;
-}
-
-#temp {
-  grid-area: 1 / span 2;
 }
 
 .value {
@@ -104,5 +101,5 @@ input[type=text] {
 
 h1 {
   font-size: 4rem;
-  margin: 1rem;
+  margin: 1rem 0;
 }

@@ -1,3 +1,5 @@
+import * as elements from './domelements';
+
 export default (() => {
   const hide = (el) => {
     el.classList.add('hidden');
@@ -24,11 +26,23 @@ export default (() => {
     }
   };
 
+  const updateWeather = (info) => {
+    const elems = elements.weatherInfo
+    elems.temp.min.textContent = info.temp.min;
+    elems.temp.current.textContent = info.temp.current;
+    elems.temp.max.textContent = info.temp.max;
+    elems.humidity.textContent = info.humidity;
+    elems.wind.textContent = info.wind;
+    elems.pressure.textContent = info.pressure;
+    elems.clouds.textContent = info.clouds;
+  };
+
   return {
     hide,
     show,
     fadeIn,
     fadeOut,
     cascade,
+    updateWeather,
   };
 })();
