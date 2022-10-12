@@ -1,5 +1,6 @@
 :root {
   --highlight-color: #d7d7d7;
+  --animation-timer: 500ms;
 }
 
 html {
@@ -53,7 +54,7 @@ input[type=text] {
 /* Transitions */
 
 .transition {
-  transition: all 500ms ease-in-out;
+  transition: all var(--animation-timer) ease-in-out;
 }
 
 .fade-out {

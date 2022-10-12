@@ -1,53 +1,31 @@
-import weather from './weatherapi';
+import weatherAPI from './weatherapi';
 import controller from './domcontroller';
 import * as elems from './domelements';
+import weatherData from './weatherdata';
 
 function setMobileHeight() {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
-function revealWeather() {
-  controller.show(document.getElementById('weather-wrapper'));
-  const hiddenElements = Array.from(document.querySelectorAll('.fade-out'));
-  setTimeout(() => {
-    controller.cascade(hiddenElements);
-  }, 500);
-}
-
-function extractInfo(json) {
-  return {
-    temp: {
-      min: json.main.temp_min,
-      current: json.main.temp,
-      max: json.main.temp_max,
-    },
-    humidity: json.main.humidity,
-    wind: json.wind.speed,
-    pressure: json.main.pressure,
-    clouds: json.weather[0].description,
-  };
+function showData(json) {
+  let extractedInfo = weatherData.extractData(json);
+  extractedInfo = weatherData.toCelcius(extractedInfo);
+  controller.updateWeather(extractedInfo);
+  controller.revealWeather();
 }
 
 function addEventListeners() {
   elems.query.addEventListener('submit', (e) => {
     e.preventDefault();
-    const data = new FormData(e.target);
-    const location = data.get('location');
-    controller.fadeOut(e.target);
+    const location = new FormData(e.target).get('location');
     e.target.reset();
-    const animationTimer = new Promise((resolve) => {
-      setTimeout(() => resolve(), 500);
-    });
+    controller.fadeOut(elems.query);
     Promise.all([
-      weather.queryWeather(location),
-      animationTimer,
+      weatherAPI.queryWeather(location),
+      controller.newTimer(),
     ])
-      .then((res) => {
-        revealWeather();
-        const extractedInfo = extractInfo(res[0]);
-        controller.updateWeather(extractedInfo);
-      })
+      .then((res) => showData(res[0]))
       .catch((err) => console.log(err));
   });
 }
@@ -58,4 +36,3 @@ function init() {
 }
 
 init();
-// revealWeather();
