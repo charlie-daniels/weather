@@ -23,7 +23,9 @@ function displayQuery(location) {
       extractedInfo = weatherData.toCelcius(extractedInfo);
       showData(extractedInfo);
     })
-    .catch((err) => console.log(err));
+    .catch(() => {
+      controller.cascade(Object.values(elements.weatherInfo));
+    });
 }
 
 function addEventListeners() {
@@ -39,8 +41,8 @@ function addEventListeners() {
 function init() {
   addEventListeners();
   setMobileHeight();
-  controller.toggleWeather();
-  displayQuery('London');
+  // controller.toggleWeather();
+  // displayQuery('London');
 }
 
 init();
