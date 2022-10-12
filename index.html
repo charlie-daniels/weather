@@ -10,19 +10,18 @@
 <body>
   <div id="content">
     <form id="query" class="transition">
-      <input type="text" name="location" id="location" placeholder="Enter city name...">
-      <input type="submit" value="S" id="submit">
+      <input type="text" name="location" id="location" placeholder="Enter a city">
+      <input type="submit" value="" id="submit">
     </form>
     <ul id="weather-info">
       <h1 id="weather-location" class="transition">London</h1>
       <li id="temp" class="transition">
-        <div class="value">
+        <div id="temp-current">
+          <p class="value">0</p>
+        </div>
+        <div class="sub">
           <div id="temp-min">
             <p class="title">Lowest</p>
-            <p class="value">0</p>
-          </div>
-          <div id="temp-current">
-            <p class="title">Now</p>
             <p class="value">0</p>
           </div>
           <div id="temp-max">
@@ -30,6 +29,9 @@
             <p class="value">0</p>
           </div>
         </div>
+      </li>
+      <li id="clouds" class="transition">
+        <p class="value">No clouds</p>
       </li>
       <li id="humidity" class="transition">
         <p class="title">Humidity</p>
@@ -43,10 +45,8 @@
         <p class="title">Pressure</p>
         <p class="value">0</p>
       </li>
-      <li id="clouds" class="transition">
-        <p class="value">No clouds</p>
-      </li>
     </ul>
   </div>
+  <footer>built by <a href="https://github.com/charlie-daniels">charlie-daniels</a></footer>
 </body>
 </html>
