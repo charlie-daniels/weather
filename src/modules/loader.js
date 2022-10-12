@@ -8,31 +8,39 @@ function setMobileHeight() {
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
-function showData(json) {
-  let extractedInfo = weatherData.extractData(json);
-  extractedInfo = weatherData.toCelcius(extractedInfo);
-  controller.updateWeather(extractedInfo);
+function showData(info) {
+  controller.updateWeather(info);
   controller.toggleWeather();
+}
+
+function displayQuery(location) {
+  Promise.all([
+    weatherAPI.queryWeather(location),
+    controller.newTimer(1000),
+  ])
+    .then((res) => {
+      let extractedInfo = weatherData.extractData(res[0]);
+      extractedInfo = weatherData.toCelcius(extractedInfo);
+      showData(extractedInfo);
+    })
+    .catch((err) => console.log(err));
 }
 
 function addEventListeners() {
   elements.query.addEventListener('submit', (e) => {
     e.preventDefault();
-    const location = new FormData(e.target).get('location');
-    e.target.reset();
+    const location = new FormData(elements.query).get('location');
+    elements.query.reset();
     controller.cascade(Object.values(elements.weatherInfo));
-    Promise.all([
-      weatherAPI.queryWeather(location),
-      controller.newTimer(),
-    ])
-      .then((res) => showData(res[0]))
-      .catch((err) => console.log(err));
+    displayQuery(location);
   });
 }
 
 function init() {
   addEventListeners();
   setMobileHeight();
+  controller.toggleWeather();
+  displayQuery('London');
 }
 
 init();

@@ -1,24 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 :root {
-  /* --highlight-color: #d7d7d7; */
-  --highlight-color: black;
+  --main-font-stack: 'Raleway', serif;
+  --highlight-color: white;
   --animation-timer: 500ms;
+  font-size: 32px;
 }
 
 body {
-  /* background: url('../assets/background.svg') no-repeat center center fixed; */
+  background: url('../assets/background.svg') no-repeat top fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: inherit;
   color: var(--highlight-color);
-}
-
-#content {
   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
-  margin: 1rem;
+  display: flex;
+  align-items: center;
+  font-family: var(--main-font-stack);
 }
+
+/* Fit viewport */
+
+#content {
+  padding: 1rem;
+}
+
+/* Search bar */
 
 #query {
   display: flex;
@@ -26,18 +35,67 @@ body {
 
 input {
   background: none;
-  font-size: 2rem;
+  font-size: 1rem;
   color: var(--highlight-color);
   text-align: left;
 }
 
 input[type=text] {
-  width: 300px;
+  width: min(300px, 90%);
   border-bottom: 2px solid var(--highlight-color);
 }
 
+input[type=submit] {
+  margin: -30px;
+  cursor: pointer;
+  width: 30px;
+  background: url('../assets/search.svg') no-repeat center;
+  background-size: contain;
+}
+
+/* Weather Info */
+
+#weather-info {
+  margin: 1rem 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
 h1 {
+  font-size: 2rem;
+}
+
+.title {
+  font-size: 0.5rem;
+}
+
+.value {
+  font-size: 1.4rem;
+}
+
+.sub {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.6rem;
+}
+
+#temp-current .value {
   font-size: 4rem;
+  margin: -1rem 0 0.5rem 0;
+}
+
+/* Footer */
+
+footer {
+  font-size: 0.5rem;
+  position: fixed;
+  bottom: 6px;
+  text-align: center;
+  width: 100%;
+}
+
+a {
+  color: inherit;
 }
 
 /* Transitions */

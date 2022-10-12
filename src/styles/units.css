@@ -1,4 +1,9 @@
-#temp .value .value::after {
+.value::after {
+  font-size: .5rem;
+  vertical-align: middle;
+}
+
+#temp .value::after {
   content: '°C';
 }
 
@@ -11,5 +16,5 @@
 }
 
 #pressure .value::after {
-  content: 'Pa';
+  content: 'hPa';
 }
