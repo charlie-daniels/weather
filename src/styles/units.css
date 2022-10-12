@@ -1,0 +1,15 @@
+#temp .value .value::after {
+  content: '°C';
+}
+
+#humidity .value::after {
+  content: '%';
+}
+
+#wind-speed .value::after {
+  content: 'mph';
+}
+
+#pressure .value::after {
+  content: 'Pa';
+}

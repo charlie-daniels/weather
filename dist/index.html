@@ -9,48 +9,44 @@
 </head>
 <body>
   <div id="content">
-    <form id="query">
+    <form id="query" class="transition">
       <input type="text" name="location" id="location" placeholder="Enter city name...">
       <input type="submit" value="S" id="submit">
     </form>
-    <div id="weather-wrapper" class="hidden">
-      <h1 id="weather-location" class="fade-out">London</h1>
-      <ul id="weather-info">
-        <li id="temp" class="fade-out">
-          <p class="title">Temperature</p>
-          <div class="value">
-            <div id="temp-min">
-              <p class="title">Min</p>
-              <p class="value">0</p>
-            </div>
-            <div id="temp-current">
-              <p class="title">Current</p>
-              <p class="value">0</p>
-            </div>
-            <div id="temp-max">
-              <p class="title">Max</p>
-              <p class="value">0</p>
-            </div>
+    <ul id="weather-info">
+      <h1 id="weather-location" class="transition">London</h1>
+      <li id="temp" class="transition">
+        <div class="value">
+          <div id="temp-min">
+            <p class="title">Lowest</p>
+            <p class="value">0</p>
           </div>
-        </li>
-        <li id="humidity" class="fade-out">
-          <p class="title">Humidity</p>
-          <p class="value">0</p>
-        </li>
-        <li id="wind-speed" class="fade-out">
-          <p class="title">Wind Speed</p>
-          <p class="value">0</p>
-        </li>
-        <li id="pressure" class="fade-out">
-          <p class="title">Pressure</p>
-          <p class="value">0</p>
-        </li>
-        <li id="clouds" class="fade-out">
-          <p class="title">Clouds</p>
-          <p class="value">0</p>
-        </li>
-      </ul>
-    </div>
+          <div id="temp-current">
+            <p class="title">Now</p>
+            <p class="value">0</p>
+          </div>
+          <div id="temp-max">
+            <p class="title">Highest</p>
+            <p class="value">0</p>
+          </div>
+        </div>
+      </li>
+      <li id="humidity" class="transition">
+        <p class="title">Humidity</p>
+        <p class="value">0</p>
+      </li>
+      <li id="wind-speed" class="transition">
+        <p class="title">Wind speed</p>
+        <p class="value">0</p>
+      </li>
+      <li id="pressure" class="transition">
+        <p class="title">Pressure</p>
+        <p class="value">0</p>
+      </li>
+      <li id="clouds" class="transition">
+        <p class="value">No clouds</p>
+      </li>
+    </ul>
   </div>
 </body>
 </html>

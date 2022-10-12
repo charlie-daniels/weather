@@ -1,3 +1,4 @@
+export const weatherInfoWrapper = document.getElementById('weather-info');
 export const weatherInfo = {
   location: document.getElementById('weather-location'),
   temp: document.querySelector('#temp'),
@@ -17,4 +18,3 @@ export const weatherInfoValues = {
   clouds: document.querySelector('#clouds .value'),
 };
 export const query = document.getElementById('query');
-export const weatherWrapper = document.getElementById('weather-wrapper');

@@ -1,38 +1,25 @@
 import * as elements from './domelements';
 
 export default (() => {
-  const hide = (el) => {
-    el.classList.add('hidden');
-  };
-
-  const show = (el) => {
-    el.classList.remove('hidden');
-  };
-
-  const newTimer = (delay) => new Promise((resolve) => {
+  const newTimer = (delay = 500) => new Promise((resolve) => {
     setTimeout(() => resolve(), delay);
   });
 
-  const fadeIn = (el) => {
-    el.classList.add('transition');
-    el.classList.remove('fade-out');
-  };
-
-  const fadeOut = (el) => {
-    el.classList.add('fade-out', 'transition');
+  const fade = (el) => {
+    el.classList.toggle('fade-out');
   };
 
   const cascade = async (elems) => {
     for (let i = 0; i < elems.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
       await newTimer(100);
-      fadeIn(elems[i]);
+      fade(elems[i]);
     }
   };
 
   const updateWeather = (info) => {
     const elems = elements.weatherInfoValues;
-    elems.location = info.location;
+    elems.location.textContent = info.location;
     elems.tempMin.textContent = info.tempMin;
     elems.tempCurrent.textContent = info.tempCurrent;
     elems.tempMax.textContent = info.tempMax;
@@ -42,21 +29,16 @@ export default (() => {
     elems.clouds.textContent = info.clouds;
   };
 
-  const revealWeather = () => {
-    show(elements.weatherWrapper);
+  const toggleWeather = () => {
     const weatherElements = Object.values(elements.weatherInfo);
-    weatherElements.unshift(elements.query);
     cascade(weatherElements);
   };
 
   return {
-    hide,
-    show,
-    fadeIn,
-    fadeOut,
+    fade,
     cascade,
     updateWeather,
-    revealWeather,
+    toggleWeather,
     newTimer,
   };
 })();
