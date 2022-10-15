@@ -18,3 +18,8 @@ export const weatherInfoValues = {
   pressure: document.querySelector('#pressure .value'),
 };
 export const query = document.getElementById('query');
+export const tempUnitWrapper = document.getElementById('temp-unit');
+export const tempUnits = {
+  celcius: document.getElementById('unit-celcius'),
+  farenheit: document.getElementById('unit-farenheit'),
+};

@@ -34,11 +34,20 @@ export default (() => {
     cascade(weatherElements);
   };
 
+  const showData = (info) => {
+    updateWeather(info);
+    toggleWeather();
+  };
+
+  const getUnit = () => document.querySelector('input[type=radio]:checked').value;
+
   return {
     fade,
     cascade,
     updateWeather,
     toggleWeather,
     newTimer,
+    showData,
+    getUnit,
   };
 })();

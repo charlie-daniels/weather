@@ -10,13 +10,20 @@
 <body>
   <div id="content">
     <form id="query" class="transition">
-      <input type="text" name="location" id="location" placeholder="Enter a city">
+      <input class="underlined" type="text" name="location" id="location" placeholder="Enter a city">
       <input type="submit" value="" id="submit">
     </form>
-    <div id="error"></div>
+    <div id="temp-unit">
+      <label for="unit-celcius">°C
+      <input type="radio" id="unit-celcius" name="unit" value="celcius" checked>
+      </label>
+      <label for="unit-farenheit">°F
+      <input type="radio" id="unit-farenheit" name="unit" value="farenheit">
+      </label>
+    </div>
     <ul id="weather-info">
       <h1 id="weather-location" class="transition">London</h1>
-      <li id="temp" class="transition">
+      <li id="temp" class="transition celcius">
         <div id="temp-current">
           <p class="value">0</p>
         </div>

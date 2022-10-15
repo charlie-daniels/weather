@@ -3,14 +3,11 @@ import controller from './domcontroller';
 import * as elements from './domelements';
 import weatherData from './weatherdata';
 
+let currentData;
+
 function setMobileHeight() {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-
-function showData(info) {
-  controller.updateWeather(info);
-  controller.toggleWeather();
 }
 
 function displayQuery(location) {
@@ -19,13 +16,21 @@ function displayQuery(location) {
     controller.newTimer(1000),
   ])
     .then((res) => {
-      let extractedInfo = weatherData.extractData(res[0]);
-      extractedInfo = weatherData.toCelcius(extractedInfo);
-      showData(extractedInfo);
+      currentData = weatherData.extractData(res[0]);
+      const newData = weatherData.updateTemperature(currentData, controller.getUnit());
+      controller.showData(newData);
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       controller.cascade(Object.values(elements.weatherInfo));
     });
+}
+
+function toggleUnits() {
+  elements.weatherInfo.temp.classList.toggle('celcius');
+  elements.weatherInfo.temp.classList.toggle('farenheit');
+  const newData = weatherData.updateTemperature(currentData, controller.getUnit());
+  controller.updateWeather(newData);
 }
 
 function addEventListeners() {
@@ -36,6 +41,9 @@ function addEventListeners() {
     controller.cascade(Object.values(elements.weatherInfo));
     displayQuery(location);
   });
+
+  elements.tempUnits.celcius.addEventListener('change', toggleUnits);
+  elements.tempUnits.farenheit.addEventListener('change', toggleUnits);
 }
 
 function init() {

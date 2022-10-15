@@ -3,6 +3,7 @@
 :root {
   --main-font-stack: 'Raleway', serif;
   --highlight-color: white;
+  --lowlight-color: #36a989;
   --animation-timer: 500ms;
   font-size: 32px;
 }
@@ -27,6 +28,12 @@ body {
   padding: 1rem;
 }
 
+/* Classes */
+
+.underlined {
+  border-bottom: 2px solid var(--highlight-color);
+}
+
 /* Search bar */
 
 #query {
@@ -42,7 +49,6 @@ input {
 
 input[type=text] {
   width: min(300px, 90%);
-  border-bottom: 2px solid var(--highlight-color);
 }
 
 input[type=submit] {
@@ -53,10 +59,35 @@ input[type=submit] {
   background-size: contain;
 }
 
+/* Unit selector */
+
+#temp-unit {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0.2rem 0;
+}
+
+input[type=radio]:checked {
+  border: 2px solid var(--lowlight-color);
+}
+
+label {
+  font-size: 0.6rem;
+  position: relative;
+}
+
+input[type=radio] {
+  position: absolute;
+  border-radius: 10px;
+  top: -0.25rem;
+  left: -0.25rem;
+  width: 1rem;
+  height: 1rem;
+}
+
 /* Weather Info */
 
 #weather-info {
-  margin: 1rem 0;
   display: grid;
   gap: 0.5rem;
 }

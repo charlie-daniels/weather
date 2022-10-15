@@ -3,7 +3,11 @@
   vertical-align: middle;
 }
 
-#temp .value::after {
+.farenheit .value::after {
+  content: '°F';
+}
+
+.celcius .value::after {
   content: '°C';
 }
 
