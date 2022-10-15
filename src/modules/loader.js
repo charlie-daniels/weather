@@ -49,8 +49,8 @@ function addEventListeners() {
 function init() {
   addEventListeners();
   setMobileHeight();
-  // controller.toggleWeather();
-  // displayQuery('London');
+  controller.toggleWeather();
+  displayQuery('London');
 }
 
 init();
