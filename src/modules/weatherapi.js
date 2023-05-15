@@ -9,7 +9,7 @@ export default (() => {
 
   const getLocationInfo = async (location, key) => {
     const res = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${key}`,
+      `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${key}`,
       { mode: 'cors', method: 'GET' },
     );
     return (await res.json())[0];
